@@ -13,3 +13,15 @@ MediaElement.js Demo
 * **JS** - *mediaelement*
   - File Path: */wp-includes/js/mediaelement/wp-mediaelement.js*
 
+#### JavaScript Events
+* loadeddata
+* progress
+* timeupdate
+* seeked
+* canplay
+* play
+* playing
+* pause
+* loadedmetadata
+* ended
+* volumechange
