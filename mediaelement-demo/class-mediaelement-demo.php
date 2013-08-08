@@ -12,8 +12,6 @@
 /**
  * Plugin class.
  *
- * TODO: Rename this class to a proper name for your plugin.
- *
  * @package MediaElement_Demo
  * @author  Gabe Shackle <gabe@hereswhatidid.com>
  */
