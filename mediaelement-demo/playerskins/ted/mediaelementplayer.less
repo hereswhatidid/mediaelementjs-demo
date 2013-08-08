@@ -1,0 +1,30 @@
+
+// Variables
+@white: 		#fff;
+@black: 		#000;
+@blue: 			#00f;
+@green:  		#0f0;
+@red: 			#f00;
+
+.mejs-container {
+	.mejs-controls {
+		background: @blue;
+		.mejs-time {
+			span {
+				color: @white;
+
+			}
+		}
+		.mejs-time-rail {
+			.mejs-time-total {
+				background: @black;
+			}
+			.mejs-time-loaded {
+				background: @red;
+			}
+			.mejs-time-current {
+				background: @green;
+			}
+		}
+	}
+}
