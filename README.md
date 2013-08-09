@@ -92,6 +92,8 @@ Plugin site: http://mediaelementjs.com/
   - **file** - *(string)* - Path to file
 * wp_read_audio_metadata( $file ) - Retrieve metadata from a audio file's ID3 tags.
   - **file** - *(string)* - Path to file
+* wp_get_video_extensions() - Return a filtered list of WP-supported video formats
+* wp_get_audio_extensions() - Return a filtered list of WP-supported audio formats
 
 #### Notable WordPress Filters
 
