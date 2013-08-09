@@ -3,6 +3,23 @@ MediaElement.js Demo
 
 Plugin site: http://mediaelementjs.com/
 
+#### Shortcodes
+* **[video]**
+  - **Attributes**
+        * **src** - *(string)* - SRC of the video to be shown
+        * **poster** - *(string)* - Placeholder image
+        * **loop** - *(string)* - Loop playback
+        * **autoplay** - *(string)* - Automatically start playback
+        * **preload** - *(string)* - Preload video
+        * **height** - *(string)* - Video height
+        * **width** - *(string)* - Video width
+* **[audio]**
+  - **Attributes**
+        * **src** - *(string)* - SRC of the video to be shown
+        * **loop** - *(string)* - Loop playback
+        * **autoplay** - *(string)* - Automatically start playback
+        * **preload** - *(string)* - Preload video
+
 #### Enqueued JS and CSS
 
 * **CSS** - *mediaelement*
