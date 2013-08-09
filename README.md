@@ -59,14 +59,14 @@ Plugin site: http://mediaelementjs.com/
         * **preload** - *(string)* - Preload video
         * **height** - *(string)* - Video height
         * **width** - *(string)* - Video width
-  - **Return** - *(strong)* - HTML content to display video
+  - **Return** - *(string)* - HTML content to display video
 * wp_audio_shortcode( $atts )) - Implements the functionality of the Audio Shortcode
   - **$attrs** - *(array)*
         * **src** - *(string)* - SRC of the audio to be shown
         * **loop** - *(string)* - Loop playback
         * **autoplay** - *(string)* - Automatically start playback
         * **preload** - *(string)* - Preload audio
-  - **Return** - *(strong)* - HTML content to display audio
+  - **Return** - *(string)* - HTML content to display audio
 * get_attached_media( $type, $post_id ) - Retrieve media attached to the passed post.
   - **$type** - *(string)* - Mime type of media to retrieve
   - **$post_id** - *(integer)* - Post ID, default is current post ID
