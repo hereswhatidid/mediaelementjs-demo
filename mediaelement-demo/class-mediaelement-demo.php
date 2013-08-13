@@ -12,6 +12,8 @@
 /**
  * Plugin class.
  *
+ * TODO: Rename this class to a proper name for your plugin.
+ *
  * @package MediaElement_Demo
  * @author  Gabe Shackle <gabe@hereswhatidid.com>
  */
@@ -81,6 +83,12 @@ class MediaElement_Demo {
 		if ( $logevents == 1 ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_log_scripts' ) );
 		}
+
+		$overridesize= get_option( $this->plugin_slug . '_overridesize' );
+
+		if ( $overridesize == 1 ) {
+			add_filter( 'shortcode_atts_video', array( $this, 'override_video_dimensions' ), 10, 3 );
+		}
 		add_action('admin_init', array( $this, 'initialize_plugin_options') );
 
 	}
@@ -116,6 +124,9 @@ class MediaElement_Demo {
 		if ( false === get_option( $this->plugin_slug . '_playerstyle' ) ) {
 			add_option( $this->plugin_slug . '_playerstyle', 'default' );
 		}
+		if ( false === get_option( $this->plugin_slug . '_overridesize' ) ) {
+			add_option( $this->plugin_slug . '_overridesize', '' );
+		}
 	}
 
 	/**
@@ -131,6 +142,9 @@ class MediaElement_Demo {
 		}
 		if ( false !== get_option( $this->plugin_slug . '_playerstyle' ) ) {
 			delete_option( $this->plugin_slug . '_playerstyle' );
+		}
+		if ( false !== get_option( $this->plugin_slug . '_overridesize' ) ) {
+			delete_option( $this->plugin_slug . '_overridesize' );
 		}
 	}
 
@@ -269,10 +283,11 @@ class MediaElement_Demo {
 		add_settings_field(
 			$this->plugin_slug . '_logevents',
 			__( 'Log player events', $this->plugin_slug ),
-			array( $this, 'settings_logevents_callback' ),
+			array( $this, 'settings_checkbox_callback' ),
 			$this->plugin_screen_hook_suffix,
 			$this->plugin_slug . '_settings_section',
 			array(
+				$this->plugin_slug . '_logevents',
 				__( 'The player events will be logged to your browser\'s console.', $this->plugin_slug )
 			)
 		);
@@ -292,27 +307,63 @@ class MediaElement_Demo {
 			)
 		);
 
+		add_settings_field(
+			$this->plugin_slug . '_overridesize',
+			__( 'Override Player Dimensions', $this->plugin_slug ),
+			array( $this, 'settings_checkbox_callback' ),
+			$this->plugin_screen_hook_suffix,
+			$this->plugin_slug . '_settings_section',
+			array(
+				$this->plugin_slug . '_overridesize',
+				__( 'The player dimensions will be overridden via the new shortcode_atts_{$shortcode} filter.', $this->plugin_slug )
+			)
+		);
+
+
 		register_setting(
 			$this->plugin_screen_hook_suffix,
 			$this->plugin_slug . '_logevents'
 		);
+
 		register_setting(
 			$this->plugin_screen_hook_suffix,
 			$this->plugin_slug . '_playerstyle'
 		);
+
+		register_setting(
+			$this->plugin_screen_hook_suffix,
+			$this->plugin_slug . '_overridesize'
+		);
+	}
+	/**
+	 * Override the default video dimesions behavior
+	 * 
+	 * @author Gabe Shackle <gabe@hereswhatidid.com>
+	 * @param  array 	$out 		The output array of shortcode attributes
+	 * @param  array 	$pairs 		The array of accepted parameters and their defaults
+	 * @param  array 	$atts 		The input array of shortcode attributes
+	 * @return array 				The updated output array of shortcode attributes
+	 */
+	public function override_video_dimensions( $out, $pairs, $atts ) {
+	    $out['width'] = '768';
+	    $out['height'] = '583';
+	    return $out;
 	}
 
 	public function settings_callback() {
 		
 	}
 
-	public function settings_logevents_callback($args) {
+	/**
+	* Callback for the checkbox field
+	*/
+	public function settings_checkbox_callback( $args ) {
 
-		$value = get_option( $this->plugin_slug . '_logevents' );
-		$fieldname = $this->plugin_slug . '_logevents';
+		$fieldname = $args[0];
+		$value = get_option( $fieldname );
 
 		$html = '<label><input type="checkbox" name="' . $fieldname . '" id="' . $fieldname . '" value="1" ' . checked( $value, 1, false ) . ' /> ';
-		$html .= $args[0] . '</label>';
+		$html .= $args[1] . '</label>';
 
 		echo $html;
 

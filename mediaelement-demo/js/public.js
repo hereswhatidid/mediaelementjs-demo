@@ -25,6 +25,10 @@
 			methodButtons += '<button data-command="pause">Pause</button>';
 			methodButtons += '<button data-command="load">Load</button>';
 			methodButtons += '<button data-command="stop">Stop</button>';
+			methodButtons += '<button data-command="mute">Mute</button>';
+			methodButtons += '<button data-command="setvolumn50">Set Volume 50%</button>';
+			methodButtons += '<button data-command="setvolume100">Set Volume 100%</button>';
+			methodButtons += '<button data-command="settime">Set Time to 120 Seconds</button>';
 			methodButtons += '</div>';
 
 			$( propertyButtons + methodButtons )
@@ -143,6 +147,18 @@
 							break;
 						case 'stop':
 							mediaObject.stop();
+							break;
+						case 'mute':
+							mediaObject.media.setMuted( ! mediaObject.media.muted );
+							break;
+						case 'setvolumn50':
+							mediaObject.media.setVolume( 0.5 );
+							break;
+						case 'setvolume100':
+							mediaObject.media.setVolume( 1 );
+							break;
+						case 'settime':
+							mediaObject.media.setCurrentTime( 120 );
 							break;
 					}
 				});
