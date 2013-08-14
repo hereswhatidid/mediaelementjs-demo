@@ -118,15 +118,15 @@ class MediaElement_Demo {
 	 * @param    boolean    $network_wide    True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
 	 */
 	public static function activate( $network_wide ) {
-		if ( false === get_option( $this->plugin_slug . '_logevents' ) ) {
-			add_option( $this->plugin_slug . '_logevents', '' );
-		}
-		if ( false === get_option( $this->plugin_slug . '_playerstyle' ) ) {
-			add_option( $this->plugin_slug . '_playerstyle', 'default' );
-		}
-		if ( false === get_option( $this->plugin_slug . '_overridesize' ) ) {
-			add_option( $this->plugin_slug . '_overridesize', '' );
-		}
+		// if ( false === get_option( $this->plugin_slug . '_logevents' ) ) {
+		// 	add_option( $this->plugin_slug . '_logevents', '' );
+		// }
+		// if ( false === get_option( $this->plugin_slug . '_playerstyle' ) ) {
+		// 	add_option( $this->plugin_slug . '_playerstyle', 'default' );
+		// }
+		// if ( false === get_option( $this->plugin_slug . '_overridesize' ) ) {
+		// 	add_option( $this->plugin_slug . '_overridesize', '' );
+		// }
 	}
 
 	/**
@@ -137,15 +137,15 @@ class MediaElement_Demo {
 	 * @param    boolean    $network_wide    True if WPMU superadmin uses "Network Deactivate" action, false if WPMU is disabled or plugin is deactivated on an individual blog.
 	 */
 	public static function deactivate( $network_wide ) {
-		if ( false !== get_option( $this->plugin_slug . '_logevents' ) ) {
-			delete_option( $this->plugin_slug . '_logevents' );
-		}
-		if ( false !== get_option( $this->plugin_slug . '_playerstyle' ) ) {
-			delete_option( $this->plugin_slug . '_playerstyle' );
-		}
-		if ( false !== get_option( $this->plugin_slug . '_overridesize' ) ) {
-			delete_option( $this->plugin_slug . '_overridesize' );
-		}
+		// if ( false !== get_option( $this->plugin_slug . '_logevents' ) ) {
+		// 	delete_option( $this->plugin_slug . '_logevents' );
+		// }
+		// if ( false !== get_option( $this->plugin_slug . '_playerstyle' ) ) {
+		// 	delete_option( $this->plugin_slug . '_playerstyle' );
+		// }
+		// if ( false !== get_option( $this->plugin_slug . '_overridesize' ) ) {
+		// 	delete_option( $this->plugin_slug . '_overridesize' );
+		// }
 	}
 
 	/**
